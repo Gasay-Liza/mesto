@@ -1,18 +1,4 @@
 .profile{
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: 30px;
   font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
   font-style: normal;
-}
-
-@media screen and (max-width: 762px){
-  .profile{
-    display: flex;
-    gap: 0;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
 }

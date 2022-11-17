@@ -31,7 +31,7 @@ popupCloseButtonElement.addEventListener('click', closePopup);
 popupElement.addEventListener('click', closePopupByClickOnOverlay);
 
 // Реализация кнопки сохранить в popup
-let formElement = document.querySelector('.popup__edit-form');
+let formElement = document.querySelector('.popup__container');
 let nameProfile = document.querySelector('.profile__name');
 let jobProfile = document.querySelector('.profile__job');
 
@@ -39,6 +39,7 @@ function formSubmitHandler (evt) {
   evt.preventDefault();
   nameProfile.textContent = nameInput.value;
   jobProfile.textContent = jobInput.value;
+  closePopup()
   }
 
 formElement.addEventListener('submit', formSubmitHandler);
