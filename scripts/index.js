@@ -37,7 +37,6 @@ function submitFormHandler (evt) {
   nameProfile.textContent = nameInput.value;
   jobProfile.textContent = jobInput.value;
   closePopup()
-  console.log("!clf")
   }
 
 // Открытие/закрытие popup по клику(EventListener)
