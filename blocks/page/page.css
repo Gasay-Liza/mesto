@@ -1,8 +1,9 @@
 .page{
+  min-width: 320px;
   background: black;
   color: #FFFFFF;
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
 }

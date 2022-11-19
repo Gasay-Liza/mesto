@@ -1,4 +1,4 @@
-.photo-grid__items{
+.photo-cards__list{
   display: grid;
   justify-content: center;
   margin: 51px 0 0;
@@ -12,13 +12,14 @@
   grid-template-columns: repeat(auto-fit, minmax(262px, 282px));
 }
 @media screen and (max-width: 986px){
-  .page__container{
+  .photo-cards__list{
     padding: 0 36px;
   }
 }
 
 @media screen and (max-width: 544px){
-  .page__container{
+  .photo-cards__list{
+    margin: 36px 0 0;
     padding: 0 19px;
   }
 }

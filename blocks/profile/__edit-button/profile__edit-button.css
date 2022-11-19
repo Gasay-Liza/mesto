@@ -3,7 +3,7 @@
   width: 24px;
   grid-area: edit-button;
   background: url("../../../images/edit-button-vector_m.svg") no-repeat 50%;
-  border: #FFFFFF solid 1px;
+  border: #FFFFFF solid 2px;
   box-sizing: border-box;
 }
 @media screen and (max-width: 544px){

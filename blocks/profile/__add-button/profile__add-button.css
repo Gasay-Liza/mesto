@@ -2,11 +2,12 @@
   display: flex;
   width: 150px;
   height: 50px;
-  background-color: black;
+  border-radius: 2px;
+  background-color: transparent;
   background-image: url("../../../images/add-button-vector_m.svg");
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  border: #FFFFFF solid 1px;
+  border: #FFFFFF solid 2px;
   box-sizing: border-box;
   padding: 0 0;
 }
