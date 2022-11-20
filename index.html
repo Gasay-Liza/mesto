@@ -17,9 +17,9 @@
         <div class="profile__text">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <p class="profile__job">Исследователь океана</p>
-          <button aria-label="Редактирование профиля" type="submit" class="profile__edit-button"></button>
+          <button aria-label="Редактирование профиля" type="button" class="profile__edit-button"></button>
         </div>
-        <button aria-label="Добавление карточки с фото" type="submit" class="profile__add-button"></button>
+        <button aria-label="Добавление карточки с фото" type="button" class="profile__add-button"></button>
     </section>
     <section class="photo-cards">
       <ul class="photo-cards__list">
@@ -34,9 +34,7 @@
           </li>
 
           <li class="photo-card">
-            <div class="photo-card__image-container">
               <img class="photo-card__image" src="images/Vnukovo.jpg" alt="Фотография: Внуково">
-            </div>
             <div class="photo-card__description">
               <h2 class="photo-card__name">Внуково</h2>
               <button aria-label="Лайк" type="button" class="photo-card__like-button"></button>
@@ -44,9 +42,7 @@
           </li>
 
           <li class="photo-card">
-            <div class="photo-card__image-container">
               <img class="photo-card__image" src="images/Krasnodar-krai-Krasnaya-polyana.jpg" alt="Фотография: Красная поляна">
-            </div>
             <div class="photo-card__description">
               <h2 class="photo-card__name">Красная Поляна</h2>
               <button aria-label="Лайк" type="button" class="photo-card__like-button"></button>
@@ -55,9 +51,7 @@
 
 
           <li class="photo-card">
-            <div class="photo-card__image-container">
               <img class="photo-card__image" src="images/Republic-of-Karelia.jpg" alt="Фотография: Карелия">
-            </div>
             <div class="photo-card__description">
               <h2 class="photo-card__name">Карелия</h2>
               <button aria-label="Лайк" type="button" class="photo-card__like-button"></button>
@@ -65,9 +59,7 @@
           </li>
 
           <li class="photo-card">
-            <div class="photo-card__image-container">
               <img class="photo-card__image" src="images/Mount-Elbrus.jpg" alt="Фотография: Эльбрус">
-            </div>
             <div class="photo-card__description">
               <h2 class="photo-card__name">Эльбрус</h2>
               <button aria-label="Лайк" type="button" class="photo-card__like-button"></button>
@@ -75,9 +67,7 @@
           </li>
 
           <li class="photo-card">
-            <div class="photo-card__image-container">
               <img class="photo-card__image" src="images/Baikal-Lake.jpg" alt="Фотография: озеро Байкал">
-            </div>
             <div class="photo-card__description">
               <h2 class="photo-card__name">Байкал</h2>
               <button aria-label="Лайк" type="button" class="photo-card__like-button"></button>
@@ -95,15 +85,13 @@
     <div class="popup__container">
       <button class="popup__close-icon" type="button"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="popup__form popup__form-inputs">
+      <form class="popup__form" name="edit-form">
         <label for="name-field" class="popup__label">
           <input class="popup__input popup__input_field_name" type="text" name="username" id="name-field">
         </label>
         <label for="job-field" class="popup__label">
           <input class="popup__input popup__input_field_job" type="text" name="userJob" id="job-field">
         </label>
-      </form>
-      <form class="popup__form popup__form-submit">
         <button type="submit" class="popup__submit-btn">Сохранить</button>
       </form>
     </div>

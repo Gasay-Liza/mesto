@@ -4,9 +4,9 @@ const popupCloseButtonElement = popupElement.querySelector('.popup__close-icon')
 const popupOpenButtonElement = document.querySelector('.profile__edit-button');
 let nameInput = popupElement.querySelector('.popup__input_field_name');
 let jobInput = popupElement.querySelector('.popup__input_field_job');
-const formElement = document.querySelector('.popup__form-submit');
 let nameProfile = document.querySelector('.profile__name');
 let jobProfile = document.querySelector('.profile__job');
+const formElement = document.querySelector('.popup__form');
 
 // Функции открытия/закрытия popup по клику
 const openPopup = function (){
@@ -42,6 +42,7 @@ function submitFormHandler (evt) {
 // Открытие/закрытие popup по клику(EventListener)
 popupOpenButtonElement.addEventListener('click', openPopup);
 // Кнопка сохранить по клику на кнопку @сохранить(EventListener)
+
 formElement.addEventListener('submit', submitFormHandler);
 // Кнопка закрыть по клику на иконку крестика(EventListener)
 popupCloseButtonElement.addEventListener('click', closePopup);
