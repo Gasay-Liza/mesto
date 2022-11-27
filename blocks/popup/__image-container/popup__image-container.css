@@ -7,7 +7,5 @@
 @media screen and (max-width: 544px){
   .popup__image-container{
     max-width: 282px;
-    padding: 25px 22px;
-    margin: 0 19px;
   }
 }
