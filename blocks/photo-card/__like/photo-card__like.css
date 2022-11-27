@@ -1,4 +1,4 @@
-.photo-card__like-button{
+.photo-card__like{
   box-sizing: border-box;
   width: 22px;
   height: 19px;
@@ -7,12 +7,10 @@
   background: url("../../../images/like-button.svg");
 }
 
-.photo-card__like-button:hover{
+.photo-card__like:hover{
   background-image: url("../../../images/like-button_hover.svg");
   cursor: pointer;
   transition: 0.3s;
 }
 
-.photo-card__like-button:active{
-  background-image: url("../../../images/like-button_active.svg");
-}
+
