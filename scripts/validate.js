@@ -1,4 +1,4 @@
-const obj = {
+const validationConfig = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__submit-btn',
@@ -13,56 +13,60 @@ const hasInvalidInput = (inputList) => {
     return !inputElement.validity.valid;
   })
 };
+
 // Переключение кнопки submit
-const toggleSubmitButton = (formElement, inputList, submitButtonSelector, inactiveButtonClass) => {
-  const submitButton = formElement.querySelector(submitButtonSelector)
+const toggleSubmitButton = (submitButton, inputList, validationConfig) => {
   if (hasInvalidInput(inputList)) {
-    submitButton.classList.add(inactiveButtonClass);
-    submitButton.setAttribute('disabled',true);
-  } else{
-    submitButton.classList.remove(inactiveButtonClass);
+    submitButton.classList.add(validationConfig.inactiveButtonClass);
+    submitButton.setAttribute('disabled', true);
+  } else {
+    submitButton.classList.remove(validationConfig.inactiveButtonClass);
     submitButton.removeAttribute('disabled');
   }
 }
+
 // Показать ошибку ввода в поле
-const showInputError = (inputElement, errorClass, errorMessage, inputErrorClass) => {
+const showInputError = (inputElement, errorMessage, validationConfig) => {
   const inputName = inputElement.getAttribute('name');
   const errorPlace = document.getElementById(`${inputName}-error`);
-  inputElement.classList.add(inputErrorClass);
+  inputElement.classList.add(validationConfig.inputErrorClass);
   errorPlace.textContent = errorMessage;
-  errorPlace.classList.add(errorClass);
+  errorPlace.classList.add(validationConfig.errorClass);
 };
 
 // Скрыть ошибку ввода в поле
-const hideInputError = (inputElement, errorClass, inputErrorClass) => {
+const hideInputError = (inputElement, validationConfig) => {
   const inputName = inputElement.getAttribute('name');
   const errorPlace = document.getElementById(`${inputName}-error`);
-  inputElement.classList.remove(inputErrorClass);
+  inputElement.classList.remove(validationConfig.inputErrorClass);
   errorPlace.textContent = '';
-  errorPlace.classList.remove(errorClass);
+  errorPlace.classList.remove(validationConfig.errorClass);
 };
 
 // Проверка на валидность введенных данных
-const checkInputValidity = (inputElement, errorClass, inputErrorClass) => {
+const checkInputValidity = (inputElement, validationConfig) => {
   if (!inputElement.validity.valid) {
-    showInputError(inputElement, errorClass, inputElement.validationMessage, inputErrorClass);
+    showInputError(inputElement, inputElement.validationMessage, validationConfig);
   } else {
-    hideInputError(inputElement, errorClass, inputErrorClass);
+    hideInputError(inputElement, validationConfig);
   }
 };
 
 // Запуск процесс наложения валидации
-const enabledValidation = ({formSelector, inputSelector, submitButtonSelector, inactiveButtonClass, inputErrorClass, errorClass}) => {
-  const formList = Array.from(document.querySelectorAll(formSelector));
+const enabledValidation = (validationConfig) => {
+  const formList = Array.from(document.querySelectorAll(validationConfig.formSelector));
   formList.forEach(formElement => {
-    formElement.addEventListener('submit', evt => evt.preventDefault())
-    const inputList = Array.from(formElement.querySelectorAll(inputSelector));
+    formElement.addEventListener('submit', evt => evt.preventDefault());
+    const inputList = Array.from(formElement.querySelectorAll(validationConfig.inputSelector));
+    const submitButton = formElement.querySelector(validationConfig.submitButtonSelector);
+    toggleSubmitButton(submitButton, inputList, validationConfig);
     inputList.forEach(inputElement => {
       inputElement.addEventListener('input', () => {
-        checkInputValidity(inputElement, errorClass, inputErrorClass);
-        toggleSubmitButton(formElement, inputList, submitButtonSelector, inactiveButtonClass);
+        checkInputValidity(inputElement, validationConfig);
+        toggleSubmitButton(submitButton, inputList, validationConfig);
       })
     })
   })
 }
-enabledValidation(obj);
+
+enabledValidation(validationConfig);
