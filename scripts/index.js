@@ -44,8 +44,8 @@ const closePopupByClickOnOverlay = (evt, popup) => {
 
 // функция закрытия попапа нажатие клавиши Escape
 const closePopupByEsc = (evt) => {
-  const popup = document.querySelector('.popup_is-opened');
   if (evt.key === 'Escape') {
+    const popup = document.querySelector('.popup_is-opened');
     closePopup(popup);
   }
 };
@@ -68,15 +68,13 @@ popupOpenEditButton.addEventListener('click', function () {
   openPopup(popupEditProfile);
   nameInput.value = nameProfile.textContent;
   jobInput.value = jobProfile.textContent;
-  submitEdit.classList.add(validationConfig.inactiveButtonClass);
-  submitEdit.setAttribute('disabled', true);
+  disabledButton(submitEdit, validationConfig);
 });
 
 // открытие попапа добавления картинки-карточки по кнопке "+"
 popupOpenAddButton.addEventListener('click', function () {
   openPopup(popupAddCard);
-  submitAdd.classList.add(validationConfig.inactiveButtonClass);
-  submitAdd.setAttribute('disabled', true);
+  disabledButton(submitAdd, validationConfig);
 });
 
 // закрытие popup-ов из-за клика по иконке-крестику

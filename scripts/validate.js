@@ -14,14 +14,22 @@ const hasInvalidInput = (inputList) => {
   })
 };
 
+function disabledButton(submitButton, validationConfig) {
+  submitButton.classList.add(validationConfig.inactiveButtonClass);
+  submitButton.setAttribute('disabled', true);
+};
+
+function enabledButton(submitButton, validationConfig) {
+  submitButton.classList.add(validationConfig.inactiveButtonClass);
+  submitButton.setAttribute('disabled', true);
+};
+
 // Переключение кнопки submit
 const toggleSubmitButton = (submitButton, inputList, validationConfig) => {
   if (hasInvalidInput(inputList)) {
-    submitButton.classList.add(validationConfig.inactiveButtonClass);
-    submitButton.setAttribute('disabled', true);
+    disabledButton(submitButton, validationConfig);
   } else {
-    submitButton.classList.remove(validationConfig.inactiveButtonClass);
-    submitButton.removeAttribute('disabled');
+    enabledButton(submitButton, validationConfig);
   }
 }
 
