@@ -22,6 +22,8 @@ const nameProfile = document.querySelector('.profile__name');
 const jobProfile = document.querySelector('.profile__job');
 const cardImage = popupAddCard.querySelector('.popup__input_field_card-image');
 const cardTitle = popupAddCard.querySelector('.popup__input_field_card-name');
+const submitAdd = popupAddCard.querySelector('.popup__add-button');
+const submitEdit = popupEditProfile.querySelector('.popup__edit-button');
 
 const openPopup = (popup) => {
   popup.classList.add('popup_is-opened');
@@ -66,11 +68,15 @@ popupOpenEditButton.addEventListener('click', function () {
   openPopup(popupEditProfile);
   nameInput.value = nameProfile.textContent;
   jobInput.value = jobProfile.textContent;
+  submitEdit.classList.add(validationConfig.inactiveButtonClass);
+  submitEdit.setAttribute('disabled', true);
 });
 
 // открытие попапа добавления картинки-карточки по кнопке "+"
 popupOpenAddButton.addEventListener('click', function () {
   openPopup(popupAddCard);
+  submitAdd.classList.add(validationConfig.inactiveButtonClass);
+  submitAdd.setAttribute('disabled', true);
 });
 
 // закрытие popup-ов из-за клика по иконке-крестику
