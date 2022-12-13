@@ -24,6 +24,7 @@ const cardImage = popupAddCard.querySelector('.popup__input_field_card-image');
 const cardTitle = popupAddCard.querySelector('.popup__input_field_card-name');
 const submitAdd = popupAddCard.querySelector('.popup__add-button');
 const submitEdit = popupEditProfile.querySelector('.popup__edit-button');
+const inputListFromEditForm = Array.from(popupEditProfile.querySelectorAll('.popup__input'));
 
 const openPopup = (popup) => {
   popup.classList.add('popup_is-opened');
@@ -66,9 +67,12 @@ popupImage.addEventListener('click', (evt) => {
 // открытие попапа редактирования профиля при нажатии по кнопке редактирования профиля
 popupOpenEditButton.addEventListener('click', function () {
   openPopup(popupEditProfile);
+  inputListFromEditForm.forEach(inputElement => {
+    hideInputError(inputElement, validationConfig);
+  })
   nameInput.value = nameProfile.textContent;
   jobInput.value = jobProfile.textContent;
-  disabledButton(submitEdit, validationConfig);
+  enabledButton(submitEdit, validationConfig);
 });
 
 // открытие попапа добавления картинки-карточки по кнопке "+"

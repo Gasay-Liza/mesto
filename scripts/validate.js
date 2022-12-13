@@ -20,8 +20,8 @@ function disabledButton(submitButton, validationConfig) {
 };
 
 function enabledButton(submitButton, validationConfig) {
-  submitButton.classList.add(validationConfig.inactiveButtonClass);
-  submitButton.setAttribute('disabled', true);
+  submitButton.classList.remove(validationConfig.inactiveButtonClass);
+  submitButton.removeAttribute('disabled');
 };
 
 // Переключение кнопки submit
