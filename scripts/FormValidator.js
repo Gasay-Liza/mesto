@@ -39,7 +39,7 @@ export class FormValidator{
     this._errorPlace.classList.add(this._errorClass);
   };
 
-  hideInputError = (inputElement) => {
+  _hideInputError = (inputElement) => {
     this._inputName = inputElement.getAttribute('name');
     this._errorPlace = document.getElementById(`${this._inputName}-error`);
     inputElement.classList.remove(this._inputErrorClass);
@@ -52,7 +52,7 @@ export class FormValidator{
     if (!inputElement.validity.valid) {
       this._showInputError(inputElement, inputElement.validationMessage);
     } else {
-      this.hideInputError(inputElement);
+      this._hideInputError(inputElement);
     }
   };
 
