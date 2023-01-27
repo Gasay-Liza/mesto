@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Места России</title>
+</head>
+<body class="page">
+<div class="page__container">
+  <header class="header">
+    <img src="<%=require('./images/header-logo.svg')%>" alt="Логотип" class="header__logo">
+  </header>
+  <main class="content">
+    <section class="profile">
+      <img src="<%=require('./images/Jacques-Yves-Cousteau.jpg')%>" class="profile__avatar" alt="Фотография профиля">
+      <div class="profile__text">
+        <h1 class="profile__name">Жак-Ив Кусто</h1>
+        <p class="profile__info">Исследователь океана</p>
+        <button aria-label="Редактирование профиля" type="button" class="profile__edit-button"></button>
+      </div>
+      <button aria-label="Добавление карточки с фото" type="button" class="profile__add-button"></button>
+    </section>
+    <section class="photo-cards">
+      <ul class="photo-cards__list">
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    © 2022 Mesto Russia by Elizaveta Gasay
+  </footer>
+
+  <div class="popup popup_type_edit-profile">
+    <div class="popup__container">
+      <button class="popup__close-icon" type="button"></button>
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <form class="popup__form popup__edit-form" name="edit-form" novalidate>
+        <label for="username" class="popup__label">
+          <input placeholder="Введите ваше имя" class="popup__input popup__input_field_name" type="text" name="username"
+                 id="username" minlength="2" maxlength="40" required value="Жак-Ив Кусто">
+          <span class="popup__error" id="username-error"></span>
+        </label>
+        <label for="info" class="popup__label">
+          <input placeholder="Чем Вы занимаетесь?" class="popup__input popup__input_field_info" type="text" name="info"
+                 id="info" minlength="2" maxlength="200" required value="Исследователь океана">
+          <span class="popup__error" id="info-error"></span>
+        </label>
+        <button type="submit" class="popup__submit-btn popup__edit-button">Сохранить</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="popup popup_type_add-card">
+    <div class="popup__container">
+      <button class="popup__close-icon" type="button"></button>
+      <h2 class="popup__title">Новое место</h2>
+      <form class="popup__form popup__add-form" name="add-form" novalidate>
+        <label for="name" class="popup__label">
+          <input placeholder="Название" class="popup__input popup__input_field_card-name" type="text" name="name"
+                 id="name" minlength="2" maxlength="30" required>
+          <span class="popup__error" id="name-error"></span>
+        </label>
+        <label for="link" class="popup__label">
+          <input placeholder="Ссылка на картинку" class="popup__input popup__input_field_card-image" type="url"
+                 name="link" id="link" required>
+          <span class="popup__error" id="link-error"></span>
+        </label>
+        <button type="submit" class="popup__submit-btn popup__add-button">Создать</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="popup popup_type_image">
+    <div class="popup__image-container">
+      <button class="popup__close-icon" type="button"></button>
+      <img class="popup__image" src="#" alt="#">
+      <h2 class="popup__title-image"></h2>
+    </div>
+  </div>
+
+</div>
+<template id="card-template">
+  <li class="photo-card">
+    <img class="photo-card__image" src="#" alt="#">
+    <button aria-label="Мусорка" type="button" class="photo-card__trash"></button>
+    <div class="photo-card__description">
+      <h2 class="photo-card__name"></h2>
+      <button aria-label="Лайк" type="button" class="photo-card__like"></button>
+    </div>
+  </li>
+</template>
+</body>
+</html>
+
+
