@@ -6,10 +6,6 @@ const popupAddCard = document.querySelector('.popup_type_add-card');
 const buttonEditProfile = document.querySelector('.profile__edit-button');
 const buttonAddCard = document.querySelector('.profile__add-button');
 
-// кнопки input профиля
-const nameInput = popupEditProfile.querySelector('.popup__input_field_name');
-const infoInput = popupEditProfile.querySelector('.popup__input_field_info');
-
 const initialCards = [
   {
     name: 'Архыз',
@@ -52,6 +48,4 @@ export {
   popupAddCard,
   buttonEditProfile,
   buttonAddCard,
-  nameInput,
-  infoInput
 }

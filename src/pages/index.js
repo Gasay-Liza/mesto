@@ -6,8 +6,6 @@ import {
   popupAddCard,
   buttonEditProfile,
   buttonAddCard,
-  nameInput,
-  infoInput
 } from "../scripts/utils/utils.js";
 import {Card} from "../scripts/components/Card.js";
 import {FormValidator} from "../scripts/components/FormValidator.js";
@@ -45,8 +43,7 @@ popupEditProfileForm.setEventListeners();
 buttonEditProfile.addEventListener('click', () => {
   const userData = profile.getUserInfo();
   //Заполнение инпутов по умолчанию
-  nameInput.value = userData.username;
-  infoInput.value = userData.info;
+  popupEditProfileForm.setInputValues(userData);
   popupEditProfileForm.openPopup();
 
 });
@@ -64,7 +61,7 @@ const cardList = new Section({
       const card = renderCard({
         data: initialCard,
         handleCardClick: (data) => {
-          popupZoomImage.setEventListeners();
+          // popupZoomImage.setEventListeners();
           popupZoomImage.openPopup(data);
         }
       }, '#card-template')
@@ -83,7 +80,7 @@ const popupAddCardForm = new PopupWithForm(
       const newCard = renderCard({
         data: formData,
         handleCardClick: (data) => {
-          popupZoomImage.setEventListeners();
+          // popupZoomImage.setEventListeners();
           popupZoomImage.openPopup(data);
         }
       }, '#card-template')
@@ -94,7 +91,7 @@ const popupAddCardForm = new PopupWithForm(
   })
 popupAddCardForm.setEventListeners();
 //
-
+popupZoomImage.setEventListeners();
 //Открытие формы редактирования
 buttonAddCard.addEventListener('click', () => {
   popupAddCardForm.openPopup();
