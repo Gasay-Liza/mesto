@@ -1,15 +1,14 @@
-.popup__title{
+.popup__confirm-title{
   font-style: normal;
   font-weight: 900;
   font-size: 24px;
   line-height: 23px;
-  margin: 0 0 54px;
-  padding: 0 0;
+  margin: 0 0 38px;
 }
+
 @media screen and (max-width: 544px){
-  .popup__title{
+  .popup__confirm-title{
     font-size: 18px;
     line-height: 22px;
-    margin: 0 0 calc(75px - 13px);
   }
 }

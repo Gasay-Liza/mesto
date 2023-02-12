@@ -8,9 +8,9 @@
 }
 
 .photo-card__like:hover{
-  background-image: url("../../../images/like-button_hover.svg");
   cursor: pointer;
-  transition: 0.3s;
+  opacity: 0.6;
+  transition: 0.3s ease;
 }
 
 

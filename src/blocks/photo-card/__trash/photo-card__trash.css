@@ -12,5 +12,5 @@
 .photo-card__trash:hover{
   background-image: url("../../../images/trash-hover.svg");
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.3s ease;
 }

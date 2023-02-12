@@ -12,7 +12,10 @@
   </header>
   <main class="content">
     <section class="profile">
-      <img src="<%=require('./images/Jacques-Yves-Cousteau.jpg')%>" class="profile__avatar" alt="Фотография профиля">
+      <div class="profile__avatar-container">
+        <img src="<%=require('./images/Jacques-Yves-Cousteau.jpg')%>" class="profile__avatar" alt="Фотография профиля">
+        <button aria-label="Редактирование аватара" type="button" class="profile__avatar-btn"></button>
+      </div>
       <div class="profile__text">
         <h1 class="profile__name">Жак-Ив Кусто</h1>
         <p class="profile__info">Исследователь океана</p>
@@ -70,6 +73,32 @@
     </div>
   </div>
 
+  <div class="popup popup_type_update-avatar">
+    <div class="popup__container">
+      <button class="popup__close-icon" type="button"></button>
+      <h2 class="popup__title">Обновить аватар</h2>
+      <form class="popup__form popup__update-avatar-form" name="change-avatar" novalidate>
+        <label for="avatar" class="popup__label">
+          <input placeholder="Ссылка на новый аватар" class="popup__input popup__input_update-avatar" type="url"
+                 name="avatar"
+                 id="avatar" required>
+          <span class="popup__error" id="avatar-error"></span>
+        </label>
+        <button type="submit" class="popup__submit-btn popup__update-avatar-button">Сохранить</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="popup popup_type_confirm">
+    <div class="popup__container">
+      <button class="popup__close-icon" type="button"></button>
+      <h2 class="popup__confirm-title ">Вы уверены?</h2>
+      <form class="popup__form popup__confirm-form" name="confirm" novalidate>
+        <button type="submit" class="popup__submit-btn">Да</button>
+      </form>
+    </div>
+  </div>
+
   <div class="popup popup_type_image">
     <div class="popup__image-container">
       <button class="popup__close-icon" type="button"></button>
@@ -85,7 +114,10 @@
     <button aria-label="Мусорка" type="button" class="photo-card__trash"></button>
     <div class="photo-card__description">
       <h2 class="photo-card__name"></h2>
-      <button aria-label="Лайк" type="button" class="photo-card__like"></button>
+      <div class="photo-card__like-container">
+        <button aria-label="Лайк" type="button" class="photo-card__like"></button>
+        <p class="photo-card__likes-counter">1000</p>
+      </div>
     </div>
   </li>
 </template>

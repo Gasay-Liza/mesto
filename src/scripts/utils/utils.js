@@ -1,10 +1,12 @@
 // popups
 const popupEditProfile = document.querySelector('.popup_type_edit-profile');
 const popupAddCard = document.querySelector('.popup_type_add-card');
+const popupEditAvatar = document.querySelector('.popup_type_update-avatar');
 
 // popup open buttons
 const buttonEditProfile = document.querySelector('.profile__edit-button');
 const buttonAddCard = document.querySelector('.profile__add-button');
+const buttonEditAvatar = document.querySelector('.profile__avatar-btn');
 
 const initialCards = [
   {
@@ -42,10 +44,11 @@ const validationConfig = {
 };
 
 export {
-  initialCards,
   validationConfig,
   popupEditProfile,
   popupAddCard,
+  popupEditAvatar,
   buttonEditProfile,
   buttonAddCard,
+  buttonEditAvatar,
 }
