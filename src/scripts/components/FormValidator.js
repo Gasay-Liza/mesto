@@ -25,7 +25,7 @@ export class FormValidator {
     this._submitButton.removeAttribute('disabled');
   }
 
-  _toggleSubmitButton() {
+  _toggleButtonState() {
     if (this._hasInvalidInput()) {
       this.disabledButton();
     } else {
@@ -58,15 +58,20 @@ export class FormValidator {
       this._hideInputError(inputElement);
     }
   };
-
+  resetValidation(){
+    this._toggleButtonState();
+    this._inputList.forEach(inputElement => {
+      this._hideInputError(inputElement)
+    })
+  }
   _setEventListeners() {
     this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
     this._submitButton = this._formElement.querySelector(this._submitButtonSelector);
-    this._toggleSubmitButton();
+    this._toggleButtonState();
     this._inputList.forEach(inputElement => {
       inputElement.addEventListener('input', () => {
         this._checkInputValidity(inputElement);
-        this._toggleSubmitButton();
+        this._toggleButtonState();
       })
     })
   }

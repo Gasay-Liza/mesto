@@ -1,9 +1,6 @@
 import './index.css';
 import {
   validationConfig,
-  popupEditProfile,
-  popupAddCard,
-  popupEditAvatar,
   buttonEditProfile,
   buttonAddCard,
   buttonEditAvatar,
@@ -32,7 +29,7 @@ let userId;
 Promise.all([api.getCards(), api.getUserInfo()])
   .then(res => {
     const [dataCards, dataUser] = res;
-    // Загружаем текстовые данные профиля с сервера и устанавливаем на страницу
+    // Загружаем данные профиля с сервера и устанавливаем на страницу
     profile.setUserInfo({
       info: dataUser.about,
       username: dataUser.name,
@@ -48,16 +45,24 @@ Promise.all([api.getCards(), api.getUserInfo()])
     console.log(`Ошибка: ${err}`);
   })
 
-// Валидация форм
-const profilePopupValidator = new FormValidator(validationConfig, popupEditProfile);
-profilePopupValidator.enabledValidation();
+const formValidators = {};
 
-const addCardPopupValidator = new FormValidator(validationConfig, popupAddCard);
-addCardPopupValidator.enabledValidation();
+// Включение валидации
+const enableValidation = (config) => {
+  const formList = Array.from(document.querySelectorAll(config.formSelector))
+  formList.forEach((formElement) => {
+    const validator = new FormValidator(config, formElement)
+// получаем данные из атрибута `name` у формы
+    const formName = formElement.getAttribute('name')
 
-const editAvatarValidator = new FormValidator(validationConfig, popupEditAvatar);
-editAvatarValidator.enabledValidation();
+    // вот тут в объект записываем под именем формы
+    formValidators[formName] = validator;
 
+    validator.enabledValidation();
+  });
+};
+
+enableValidation(validationConfig);
 
 //Экземпляр профиля юзера
 const profile = new UserInfo({
@@ -73,7 +78,7 @@ const popupEditProfileForm = new PopupWithForm(
     handleSubmitForm: (formData) => {
       popupEditProfileForm.loading(true);
       api.setUserInfo(formData)
-        .then(res => {
+        .then(() => {
           profile.setUserInfo(formData);
           popupEditProfileForm.closePopup()
         })
@@ -90,6 +95,7 @@ popupEditProfileForm.setEventListeners();
 
 //Открытие формы редактирования
 buttonEditProfile.addEventListener('click', () => {
+  formValidators['edit-form'].resetValidation();
   const userData = profile.getUserInfo();
   //Заполнение инпутов по умолчанию
   popupEditProfileForm.setInputValues(userData);
@@ -119,6 +125,7 @@ popupEditAvatarForm.setEventListeners();
 
 //Открытие формы редактирования аватара
 buttonEditAvatar.addEventListener('click', () => {
+  formValidators['change-avatar-form'].resetValidation();
   const avatarData = profile.getUserAvatar();
   //Заполнение инпутов по умолчанию
   popupEditAvatarForm.setInputValues(avatarData);
@@ -195,7 +202,6 @@ const popupAddCardForm = new PopupWithForm(
         .then(res => {
           cardList.addItem(createCard(res), true);
           popupAddCardForm.closePopup();
-          addCardPopupValidator.disabledButton();
         })
         .catch((err) => {
           console.log(`Ошибка: ${err}`);
@@ -208,6 +214,7 @@ popupZoomImage.setEventListeners();
 
 //Открытие формы добавление новой карточки
 buttonAddCard.addEventListener('click', () => {
+  formValidators['add-form'].resetValidation()
   popupAddCardForm.openPopup();
 });
 
