@@ -198,6 +198,7 @@ const popupAddCardForm = new PopupWithForm(
   '.popup_type_add-card',
   {
     handleSubmitForm: (formData) => {
+      popupAddCardForm.loading(true);
       api.createCard(formData)
         .then(res => {
           cardList.addItem(createCard(res), true);
@@ -205,7 +206,10 @@ const popupAddCardForm = new PopupWithForm(
         })
         .catch((err) => {
           console.log(`Ошибка: ${err}`);
-        });
+        })
+        .finally(() => {
+          popupAddCardForm.loading(false);
+        })
     }
   })
 
